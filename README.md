@@ -147,7 +147,7 @@ through independent validation.
 
 **Suyash**  
 MBA (Finance) — IFMR GSB, Krea University  
-[LinkedIn](www.linkedin.com/in/suyashbajpayee) | 
+[LinkedIn](https://www.linkedin.com/in/suyashbajpayee/) | 
 [LendingClub Model](https://github.com/suyashqf/credit-risk-model-lending-club)
 
 ---
