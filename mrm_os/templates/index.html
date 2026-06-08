@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MRM OS</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="workspace">
+      <aside class="control-panel">
+        <div class="brand">
+          <span class="brand-mark">M</span>
+          <div>
+            <h1>MRM OS</h1>
+            <p>Independent validation cockpit</p>
+          </div>
+        </div>
+
+        <form id="validation-form">
+          <label class="file-drop">
+            <input id="portfolio" name="portfolio" type="file" accept=".csv" required>
+            <span>Upload portfolio CSV</span>
+            <strong id="file-name">No file selected</strong>
+          </label>
+
+          <label class="file-drop">
+            <input id="validation-config" name="validation_config" type="file" accept=".yaml,.yml,.json">
+            <span>Upload validation config</span>
+            <strong id="config-name">Using validation_config.yaml</strong>
+          </label>
+
+          <div class="slider-group">
+            <label>
+              <span>Interest Rate Shock</span>
+              <output id="rate-output">0.00%</output>
+              <input name="interest_rate_delta" type="range" min="-5" max="5" step="0.25" value="0">
+            </label>
+            <label>
+              <span>GDP Growth Shock</span>
+              <output id="gdp-output">0.00%</output>
+              <input name="gdp_growth_delta" type="range" min="-5" max="5" step="0.25" value="0">
+            </label>
+            <label>
+              <span>Unemployment Shock</span>
+              <output id="unemployment-output">0.00%</output>
+              <input name="unemployment_delta" type="range" min="-5" max="5" step="0.25" value="0">
+            </label>
+          </div>
+
+          <button class="primary-action" type="submit">Run Validation</button>
+        </form>
+      </aside>
+
+      <section class="results-panel">
+        <header class="results-header">
+          <div>
+            <h2>Monitoring Results</h2>
+            <p id="portfolio-status">Awaiting portfolio upload</p>
+          </div>
+          <span id="alert-pill" class="alert neutral">Pending</span>
+        </header>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <span>KS Statistic</span>
+            <strong id="ks-value">--</strong>
+          </article>
+          <article class="metric-card">
+            <span>Gini</span>
+            <strong id="gini-value">--</strong>
+          </article>
+          <article class="metric-card">
+            <span>PSI</span>
+            <strong id="psi-value">--</strong>
+          </article>
+          <article class="metric-card">
+            <span>ECL Delta</span>
+            <strong id="ecl-value">--</strong>
+          </article>
+        </div>
+
+        <section class="chart-area">
+          <div class="section-heading">
+            <h3>Expected vs Actual by Decile</h3>
+          </div>
+          <canvas id="decile-chart" width="900" height="300"></canvas>
+        </section>
+
+        <section class="rules-area">
+          <div class="section-heading">
+            <h3>Independent Challenge Rules</h3>
+          </div>
+          <div id="rules-table" class="rules-table"></div>
+        </section>
+
+        <section class="report-area">
+          <div class="section-heading">
+            <h3>Validation Memo</h3>
+            <button id="export-button" type="button" disabled>Export</button>
+          </div>
+          <textarea id="report-output" spellcheck="false" placeholder="Generated validation memo will appear here."></textarea>
+        </section>
+      </section>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

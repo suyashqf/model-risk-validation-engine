@@ -1,0 +1,16 @@
+model_name: "PD Model v1.0"
+model_type: "Logistic Regression"
+intended_use: "IFRS 9 ECL calculation and regulatory stress testing"
+features:
+  - interest_rate
+  - gdp_growth
+  - lgd
+  - vintage_month
+target_variable: "Binary default outcome (1 = default, 0 = performing)"
+development_data: "Synthetic loan portfolio — 1000 observations"
+train_test_split: "70/30 random split"
+validation_data: "Synthetic - 1000 obs"
+analyst_name: "Suyash"
+validation_date: "2026-06-08"
+review_date: "2026-06-08"
+ollama_model: "phi3:latest"
